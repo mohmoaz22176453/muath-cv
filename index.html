@@ -193,9 +193,9 @@
 
   .hero-photo-box img {
     width: 100%;
-    height: 480px;
+    height: 500px;
     object-fit: cover;
-    object-position: top center;
+    object-position: center top;
     border-radius: 18px;
     display: block;
     filter: brightness(1.05) contrast(1.05);
@@ -552,14 +552,31 @@
     transform: translateY(0);
   }
 
-  @media (max-width: 768px) {
-    .hero-inner { grid-template-columns: 1fr; }
-    .hero-photo-box { order: -1; }
-    .hero-photo-box img { height: 350px; }
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; padding: 0 1rem; }
+    .hero-photo-box { order: -1; max-width: 340px; margin: 0 auto; }
+    .hero-photo-box img { height: 380px; }
+    .hero-flag { justify-content: center; }
+    .hero-desc { margin: 0 auto 2rem; max-width: 100%; }
+    .hero-stats { justify-content: center; gap: 1rem; }
+    .hero h1 { font-size: 2.8rem; word-break: break-word; }
     .info-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
     .dev-box { flex-direction: column; text-align: center; }
     .dev-links { justify-content: center; }
+    .trophies-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 3rem 1.2rem; }
+    .container { padding: 0 0.5rem; }
+    .career-timeline { padding-right: 1.5rem; }
+  }
+
+  @media (max-width: 480px) {
+    .hero { padding: 6rem 1rem 3rem; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero-stat .num { font-size: 1.5rem; }
+    .hero-desc { font-size: 0.9rem; }
+    .hero-position { font-size: 0.95rem; }
   }
 </style>
 </head>
@@ -607,7 +624,7 @@
     </div>
 
     <div class="hero-photo-box">
-      <img src="https://i.imgur.com/avf5P2n.jpeg" alt="معاذ عبد الخالق">
+      <img src="photo.jpg" alt="معاذ عبد الخالق">
       <div class="photo-badge">🧤 حارس المرمى الأسطوري</div>
     </div>
   </div>
