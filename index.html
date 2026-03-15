@@ -52,7 +52,6 @@
     z-index: 0;
   }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -107,8 +106,8 @@
     margin: 0 auto;
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 3rem;
+    grid-template-columns: 1fr 380px;
+    gap: 4rem;
     align-items: center;
   }
 
@@ -160,9 +159,7 @@
     flex-wrap: wrap;
   }
 
-  .hero-stat {
-    text-align: center;
-  }
+  .hero-stat { text-align: center; }
 
   .hero-stat .num {
     font-size: 2rem;
@@ -173,42 +170,52 @@
   }
 
   .hero-stat .label {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--text-muted);
     margin-top: 0.3rem;
   }
 
-  .hero-badge-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+  /* PHOTO */
+  .hero-photo-box {
     animation: fadeInUp 0.8s ease 0.6s both;
-  }
-
-  .jersey {
-    width: 160px;
-    height: 190px;
     position: relative;
   }
 
-  .jersey svg {
+  .hero-photo-box::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--green), transparent, var(--green-glow));
+    z-index: -1;
+    opacity: 0.6;
+  }
+
+  .hero-photo-box img {
     width: 100%;
-    height: 100%;
-    filter: drop-shadow(0 0 20px rgba(22, 163, 74, 0.4));
+    height: 480px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 18px;
+    display: block;
+    filter: brightness(1.05) contrast(1.05);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(22,163,74,0.15);
   }
 
-  .club-badge {
-    background: var(--card);
+  .photo-badge {
+    position: absolute;
+    bottom: 1.2rem;
+    left: 1.2rem;
+    background: rgba(3, 10, 3, 0.85);
+    backdrop-filter: blur(10px);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 0.8rem 1.5rem;
-    text-align: center;
-    font-size: 0.85rem;
-    color: var(--green-light);
+    border-radius: 10px;
+    padding: 0.6rem 1rem;
+    font-size: 0.82rem;
+    color: var(--green-glow);
+    font-weight: 600;
   }
 
-  /* SECTION */
   section {
     position: relative;
     z-index: 1;
@@ -242,6 +249,74 @@
     margin: 0.8rem 0 3rem;
   }
 
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .info-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s;
+  }
+
+  .info-card:hover { border-color: rgba(22, 163, 74, 0.4); }
+
+  .info-card h3 {
+    font-size: 0.9rem;
+    color: var(--green-light);
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+  }
+
+  .info-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .info-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .info-list li strong { color: var(--text); }
+
+  .quote-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-right: 4px solid var(--green);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    position: relative;
+  }
+
+  .quote-box::before {
+    content: '"';
+    position: absolute;
+    top: -0.5rem;
+    right: 1.5rem;
+    font-size: 4rem;
+    color: var(--green-dim);
+    font-family: serif;
+    line-height: 1;
+  }
+
+  .quote-box p {
+    font-size: 1.05rem;
+    color: var(--text);
+    line-height: 1.8;
+    font-style: italic;
+  }
+
   /* CAREER */
   .career-timeline {
     position: relative;
@@ -251,9 +326,7 @@
   .career-timeline::before {
     content: '';
     position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    right: 0; top: 0; bottom: 0;
     width: 2px;
     background: linear-gradient(var(--green), transparent);
   }
@@ -271,10 +344,8 @@
   .career-item::before {
     content: '';
     position: absolute;
-    right: -2.4rem;
-    top: 1.5rem;
-    width: 12px;
-    height: 12px;
+    right: -2.4rem; top: 1.5rem;
+    width: 12px; height: 12px;
     background: var(--green);
     border-radius: 50%;
     box-shadow: 0 0 10px var(--green);
@@ -292,16 +363,8 @@
     margin-bottom: 0.3rem;
   }
 
-  .career-item h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-  }
-
-  .career-item p {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-  }
+  .career-item h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .career-item p { font-size: 0.88rem; color: var(--text-muted); }
 
   /* TROPHIES */
   .trophies-grid {
@@ -328,17 +391,8 @@
   }
 
   .trophy-icon { font-size: 2rem; flex-shrink: 0; }
-
-  .trophy-card h3 {
-    font-size: 0.95rem;
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-  }
-
-  .trophy-card p {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-  }
+  .trophy-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .trophy-card p { font-size: 0.82rem; color: var(--text-muted); }
 
   .trophy-count {
     display: inline-block;
@@ -382,84 +436,89 @@
     line-height: 1;
   }
 
-  .stat-card .stat-label {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-top: 0.5rem;
+  .stat-card .stat-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; }
+
+  /* DEVELOPER SECTION */
+  .dev-section {
+    background: rgba(6, 16, 6, 0.6);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
   }
 
-  /* INFO */
-  .info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-
-  .info-card {
+  .dev-box {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 2rem;
-    transition: all 0.3s;
-  }
-
-  .info-card:hover { border-color: rgba(22, 163, 74, 0.4); }
-
-  .info-card h3 {
-    font-size: 0.9rem;
-    color: var(--green-light);
-    margin-bottom: 1.2rem;
-    font-weight: 600;
-  }
-
-  .info-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-  }
-
-  .info-list li {
+    border-radius: 16px;
+    padding: 2.5rem;
     display: flex;
     align-items: center;
-    gap: 0.7rem;
-    font-size: 0.9rem;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .dev-info h3 {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-bottom: 0.3rem;
+  }
+
+  .dev-info h2 {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--green-glow);
+    margin-bottom: 0.5rem;
+  }
+
+  .dev-info p {
+    font-size: 0.88rem;
     color: var(--text-muted);
   }
 
-  .info-list li span:first-child { font-size: 1rem; }
-  .info-list li strong { color: var(--text); }
+  .dev-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
 
-  /* QUOTE */
-  .quote-box {
-    background: var(--card);
+  .dev-link {
+    padding: 0.8rem 1.8rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .dev-link.whatsapp {
+    background: #25d366;
+    color: white;
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+  }
+
+  .dev-link.whatsapp:hover {
+    background: #20bd5a;
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(37, 211, 102, 0.5);
+  }
+
+  .dev-link.telegram {
+    background: transparent;
+    color: var(--green-glow);
     border: 1px solid var(--border);
-    border-right: 4px solid var(--green);
-    border-radius: 12px;
-    padding: 2rem;
-    margin-top: 2rem;
-    position: relative;
   }
 
-  .quote-box::before {
-    content: '"';
-    position: absolute;
-    top: -0.5rem;
-    right: 1.5rem;
-    font-size: 4rem;
-    color: var(--green-dim);
-    font-family: serif;
-    line-height: 1;
+  .dev-link.telegram:hover {
+    border-color: var(--green-light);
+    background: rgba(22, 163, 74, 0.1);
+    transform: translateY(-2px);
   }
 
-  .quote-box p {
-    font-size: 1.05rem;
-    color: var(--text);
-    line-height: 1.8;
-    font-style: italic;
-  }
-
-  /* FOOTER */
   footer {
     text-align: center;
     padding: 2rem;
@@ -472,7 +531,6 @@
 
   footer span { color: var(--green-light); }
 
-  /* ANIMATIONS */
   @keyframes fadeInDown {
     from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -496,20 +554,19 @@
 
   @media (max-width: 768px) {
     .hero-inner { grid-template-columns: 1fr; }
-    .hero-badge-box { display: none; }
+    .hero-photo-box { order: -1; }
+    .hero-photo-box img { height: 350px; }
     .info-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
+    .dev-box { flex-direction: column; text-align: center; }
+    .dev-links { justify-content: center; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <div class="nav-logo">
-    🧤 معاذ عبد الخالق
-    <span>حارس المرمى</span>
-  </div>
+  <div class="nav-logo">🧤 معاذ عبد الخالق <span>حارس المرمى</span></div>
   <ul class="nav-links">
     <li><a href="#info">نبذة</a></li>
     <li><a href="#career">المسيرة</a></li>
@@ -549,33 +606,9 @@
       </div>
     </div>
 
-    <div class="hero-badge-box">
-      <!-- Jersey SVG -->
-      <div class="jersey">
-        <svg viewBox="0 0 160 190" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="jerseyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#16a34a"/>
-              <stop offset="100%" style="stop-color:#15803d"/>
-            </linearGradient>
-          </defs>
-          <!-- Body -->
-          <path d="M30 40 L10 70 L30 75 L30 170 L130 170 L130 75 L150 70 L130 40 L110 55 C100 30 60 30 50 55 Z"
-            fill="url(#jerseyGrad)" stroke="rgba(74,222,128,0.3)" stroke-width="1.5"/>
-          <!-- Collar -->
-          <path d="M60 40 C65 50 95 50 100 40" fill="none" stroke="rgba(74,222,128,0.5)" stroke-width="2"/>
-          <!-- Number -->
-          <text x="80" y="120" text-anchor="middle" font-size="40" font-weight="900"
-            fill="rgba(255,255,255,0.9)" font-family="Cairo">1</text>
-          <!-- Glow effect -->
-          <path d="M30 40 L10 70 L30 75 L30 170 L130 170 L130 75 L150 70 L130 40 L110 55 C100 30 60 30 50 55 Z"
-            fill="none" stroke="rgba(74,222,128,0.15)" stroke-width="8"/>
-        </svg>
-      </div>
-      <div class="club-badge">
-        🏆 أهلي صنعاء<br>
-        <span style="font-size:0.75rem; color: var(--text-muted)">النادي الأم</span>
-      </div>
+    <div class="hero-photo-box">
+      <img src="https://i.imgur.com/avf5P2n.jpeg" alt="معاذ عبد الخالق">
+      <div class="photo-badge">🧤 حارس المرمى الأسطوري</div>
     </div>
   </div>
 </section>
@@ -632,17 +665,17 @@
       <div class="career-item">
         <div class="period">2010 — 2013</div>
         <h3>🔵 نادي العروبة</h3>
-        <p>انتقل إلى نادي العروبة وحقق معه بطولة الدوري اليمني وكأس السوبر، ليضيف مزيداً من الألقاب لرصيده.</p>
+        <p>انتقل إلى نادي العروبة وحقق معه بطولة الدوري اليمني وكأس السوبر.</p>
       </div>
       <div class="career-item">
         <div class="period">1990 — 2013</div>
         <h3>🇾🇪 المنتخب الوطني اليمني</h3>
-        <p>شكّل العمود الفقري للمنتخب اليمني طوال مسيرته، ولعب 80 مباراة دولية، وعاصر أجيالاً كاملة من النجوم اليمنيين.</p>
+        <p>شكّل العمود الفقري للمنتخب اليمني طوال مسيرته، ولعب 80 مباراة دولية.</p>
       </div>
       <div class="career-item">
         <div class="period">2013</div>
         <h3>🏁 الاعتزال</h3>
-        <p>أعلن اعتزاله بعد مسيرة استثنائية تجاوزت 23 عاماً، وهو متجاوز الأربعين من عمره، تاركاً إرثاً لا يُنسى في كرة القدم اليمنية.</p>
+        <p>أعلن اعتزاله بعد مسيرة استثنائية تجاوزت 23 عاماً، تاركاً إرثاً لا يُنسى في كرة القدم اليمنية.</p>
       </div>
     </div>
   </div>
@@ -740,9 +773,26 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- DEVELOPER SECTION -->
+<section class="dev-section">
+  <div class="container">
+    <div class="dev-box fade-in">
+      <div class="dev-info">
+        <h3>💻 تصميم وبرمجة</h3>
+        <h2>محمد معاذ عبد الخالق</h2>
+        <p>مطور ومبرمج يمني • للتواصل والاستفسار عن المشاريع</p>
+      </div>
+      <div class="dev-links">
+        <a href="https://wa.me/967736325789" class="dev-link whatsapp" target="_blank">
+          📱 واتساب
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <p>سيرة ذاتية — <span>معاذ عبد الخالق</span> • أسطورة كرة القدم اليمنية 🇾🇪</p>
+  <p>صُنع بـ ❤️ بواسطة <span>محمد معاذ عبد الخالق</span> • اليمن 🇾🇪</p>
 </footer>
 
 <script>
